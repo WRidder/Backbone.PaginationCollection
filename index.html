@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8" />
+    <title>Backbone.PaginationCollection Example</title>
+
+    <!-- Dependencies -->
+    <script type="text/javascript" src="vendor/underscore-min.js"></script>
+    <script type="text/javascript" src="vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/backbone-min.js"></script>
+    <script type="text/javascript" src="vendor/backbone.virtual-collection.min.js"></script>
+    <script type="text/javascript" src="vendor/backbone.paginator.min.js"></script>
+    <script type="text/javascript" src="vendor/backbone.marionette.min.js"></script>
+
+    <script type="text/javascript" src="vendor/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+
+    <script type="text/javascript" src="vendor/backgrid.min.js"></script>
+    <link rel="stylesheet" href="vendor/backgrid.min.css">
+    <script type="text/javascript" src="vendor/backgrid-paginator.min.js"></script>
+    <link rel="stylesheet" href="vendor/backgrid-paginator.min.css">
+    <script type="text/javascript" src="vendor/backgrid-filter.min.js"></script>
+    <link rel="stylesheet" href="vendor/backgrid-filter.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Insert library -->
+    <script type="text/javascript" src="../lib/Backbone.PaginationCollection.js"></script>
+</head>
+<body>
+<h1>Pageable backgrid + Backbone.PaginationCollection example</h1>
+<span>Uses collections with randomly generated titles. May contain duplicates.</span>
+<div class="row">
+    <div id="col1" class="col-sm-4 column">
+    </div>
+    <div id="col2" class="col-sm-4 column">
+    </div>
+    <div id="col3" class="col-sm-4 column">
+        <span>Pageable backgrid using Backbone.PaginationCollection as source.</span><br/><br/>
+    </div>
+</div>
+
+<script type="text/html" id="movie-list">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><%= title %> </h3>
+        </div >
+        <div class="panel-body"></div>
+    </div >
+    <button type="button" class="btn btn-primary btnadditem">Add item</button>
+    <button type="button" class="btn btn-primary btnreset">Reset collection</button>
+</script>
+
+<script type="text/template" id="movie-list-item">
+    Title: <%= title %>
+    <button type="button" class="truebtn btn <%= btnclass %>"> <%= btntext %></button>
+    <button type="button" class="btn btn-danger"> Delete </button>
+</script>
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
