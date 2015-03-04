@@ -39,8 +39,6 @@ gulp.task('bundle', function (cb) {
 		if (err) {
 			throw new $.util.PluginError('webpack', err);
 		}
-
-		//(false || !!argv.verbose) && $.util.log('[webpack]', stats.toString({colors: true}));
 		if (!started) {
 			started = true;
 			return cb();
@@ -50,6 +48,11 @@ gulp.task('bundle', function (cb) {
 	bundler.run(bundle);
 });
 
+// Move lib to example
+gulp.task("move-library", function() {
+	return gulp.src("lib/*.js").pipe(gulp.dest("example/js"));
+});
+
 // Clean task
 gulp.task('build-clean', function() {
 	return gulp.src(DEST).pipe(clean());
@@ -57,7 +60,7 @@ gulp.task('build-clean', function() {
 
 // Build the app from source code
 gulp.task('build', function(cb) {
-	runSequence('build-clean', 'lint', 'bundle', 'grunt-test', cb);
+	runSequence('build-clean', 'lint', 'bundle', 'grunt-test', 'move-library', cb);
 });
 
 // Watcher
